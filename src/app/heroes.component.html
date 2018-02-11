@@ -1,0 +1,13 @@
+
+  <ul>
+    <li *ngFor='let hero of heroes' (click)='onSelect(hero)' [class.selected]='hero==selectedHero'  [routerLink]="['/detail',hero.id]">
+      <div><label>id: </label>{{hero.id}}</div>
+      <div><label>name: </label><input type="text" [(ngModel)]='hero.name' placeholder="name" ></div>
+    </li>
+  </ul>
+  <div *ngIf='selectedHero'>
+  	<h2>
+  		{{selectedHero.name}} is My Hero!
+  		</h2>
+  		<button (click)="gotoDetail()" >View Details</button>
+	</div>

@@ -1,25 +1,13 @@
 import { Component,OnInit } from '@angular/core';
+import {Router} from '@angular/router'
+
 import {Hero} from './hero';
 import {HeroService} from './hero.service';
 
 @Component({
 	selector:'heroes',
-	template:`
-	<h1>{{title}}</h1>
- 
-  <ul>
-    <li *ngFor='let hero of heroes' (click)='onSelect(hero)' [class.selected]='hero==selectedHero'  [routerLink]="['/detail',hero.id]">
-      <div><label>id: </label>{{hero.id}}</div>
-      <div><label>name: </label><input type="text" [(ngModel)]='hero.name' placeholder="name" ></div>
-    </li>
-  </ul>
-  `,
-  styles:[`
-  	    .selected {
-      background-color: #CFD8DC !important;
-      color: white;
-    	}
-  `],
+	templateUrl:'./heroes.component.html',
+  styleUrls:['./heroes.component.css'] ,
   
 })
 
@@ -28,7 +16,7 @@ export class HeroesComponent implements OnInit{
 	selectedHero:Hero;
 	 heroes:Hero[];
 
-	 constructor(private heroService:HeroService){	 }
+	 constructor(private heroService:HeroService,private router:Router){	 }
 	 ngOnInit():void{
 	 	this.getHeroes();
 	 }
@@ -37,5 +25,8 @@ export class HeroesComponent implements OnInit{
 	 }
 	 onSelect(value:Hero):void{
 	 	this.selectedHero=value;
+	 }
+	 gotoDetail():void{
+	 	this.router.navigate(['detail',this.selectedHero.id]);
 	 }
 }
