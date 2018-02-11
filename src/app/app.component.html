@@ -1,12 +1,6 @@
- <h1>{{title}}</h1>
- 
-  <ul>
-    <li *ngFor='let hero of heroes' (click)='onSelect(hero)' [class.selected]='hero==selectedHero' >
-      <div><label>id: </label>{{hero.id}}</div>
-      <div><label>name: </label><input type="text" [(ngModel)]='hero.name' placeholder="name" ></div>
-    </li>
-  </ul>
-  <hero-detail [hero]='selectedHero' ></hero-detail>
-
+<a routerLink="/dashboard">DashBoard</a>
+ <a routerLink="/heroes">Heroes</a>
+  <!-- <hero-detail [hero]='selectedHero' ></hero-detail> -->
+<router-outlet></router-outlet>
   
   
