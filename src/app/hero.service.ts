@@ -1,5 +1,10 @@
 import {Injectable} from '@angular/core'
+import {Headers,Http} from '@angular/http'
+
 import {Hero} from './hero'
+
+import 'rxjs/add/operator/toPromise';
+
  const HEROES: Hero[] = [
       { id: 11, name: 'Mr. Nice' },
       { id: 12, name: 'Narco' },
@@ -15,11 +20,27 @@ import {Hero} from './hero'
 
 @Injectable()
 export class HeroService{
+     private heroUrl='/list';
+      constructor(private http:Http){};
+
 	getHeroes():Promise<Hero[]>{
-		return Promise.resolve(HEROES);
+         return   this.http.get(this.heroUrl)
+                 .toPromise()
+              
+                .then(response => response.json() as Hero[])
+
+               
+           
+           
+           
+            
 	}
       getHero(id:number):Promise<Hero>{
             return this.getHeroes().then(heroes=>heroes.find(hero=>hero.id===id));
+      }
+      private handleError(error: any): Promise<any> {
+      console.error('An error occurred', error); // for demo purposes only
+      return Promise.reject(error.message || error);
       }
      
 }

@@ -11,8 +11,13 @@ export class DashBoardComponent implements OnInit{
 	constructor(private heroService:HeroService){}
 
 	ngOnInit():void{
+		console.log(11)
 		this.heroService.getHeroes()
-			.then(heroes=>this.heroes=heroes.slice(1,5));
+					.then(response=>{
+						this.heroes=response;
+					})
+			
+			
 
 	}
 }
