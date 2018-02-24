@@ -1,13 +1,15 @@
 import {Component,OnInit} from '@angular/core';
 import {HeroService} from './hero.service';
-import {Hero} from './hero'
+import {Hero} from './hero';
+
 @Component({
 	selector:'dashboard',
 	templateUrl:'./dashboard.component.html'
 })
 
 export class DashBoardComponent implements OnInit{
-	heroes:Hero[]=[];
+  heroes:Hero[]=[];
+  color:string='red';
 	constructor(private heroService:HeroService){}
 
 	ngOnInit():void{
@@ -16,8 +18,8 @@ export class DashBoardComponent implements OnInit{
 					.then(response=>{
 						this.heroes=response;
 					})
-			
-			
+
+
 
 	}
 }

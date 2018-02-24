@@ -2,5 +2,17 @@
 {
   "/list":{
     "target":"http://localhost:8888"
+  },
+  "/get":{
+    "target":"http://localhost:8888"
+  },
+  "/delete":{
+    "target":"http://localhost:8888"
+  },
+  "/update":{
+    "target":"http://localhost:8888"
+  },
+  "/add":{
+    "target":"http://localhost:8888"
   }
 }
